@@ -37,6 +37,12 @@ $(function(){
       });
     }
   });
+
+  $('.post-comment-btn').click(function(){
+    var $this = $(this);
+    $('.post-comment-form').find('input[name="parent_id"]').val($this.data('parentid'));
+  });
+
   $('.post-comment').click(function(){
     var $this = $(this);
     var $form = $this.parents('form');

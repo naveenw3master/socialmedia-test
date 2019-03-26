@@ -30,7 +30,7 @@
           <% } else { %>
           <a href="javascript:void(0);" data-id="<%= post_details.PostID %>" class="label label-success like_post">Like</a>
           <% } %>
-          <a href="javascript:void(0);" class="label label-warning" data-toggle="modal" data-target="#commentModal">Post Comment</a>
+          <a href="javascript:void(0);" class="label label-warning post-comment-btn" data-parentid="0" data-toggle="modal" data-target="#commentModal">Post Comment</a>
         </div>
     </div>
 
@@ -47,7 +47,7 @@
         <% } else { %>
         <a href="javascript:void(0);" data-id="<%= el.CommentID %>" class="label label-success like_comment">Like</a>
         <% } %>
-        <a href="javascript:void(0);" class="label label-warning" data-toggle="modal" data-target="#commentModal">Reply Comment</a>
+        <a href="javascript:void(0);" class="label label-warning post-comment-btn" data-parentid="<%= el.CommentID %>" data-toggle="modal" data-target="#commentModal">Reply Comment</a>
       </div>
     </div>
 
@@ -77,7 +77,7 @@
 
     <!-- Modal content-->
     <div class="modal-content">
-      <form action="/posts/post-comment" method="post">
+      <form action="/posts/post-comment" method="post" class="post-comment-form">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">Post Comment</h4>
