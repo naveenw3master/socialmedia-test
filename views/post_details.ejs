@@ -26,9 +26,9 @@
           <span class="label label-info"><%= post_details.CommentsCount %> Comments</span>
           <span class="label label-info"><%= post_details.LikesCount %> Likes</span>
           <% if(post_details.MyLikeStatus){ %>
-          <span class="label label-default">Liked</span>
+          <span class="label label-default">You Liked</span>
           <% } else { %>
-          <span class="label label-success">Like</span>
+          <a href="javascript:void(0);" data-id="<%= post_details.PostID %>" class="label label-success like_post">Like</a>
           <% } %>
         </div>
     </div>
@@ -42,9 +42,9 @@
         <span class="label label-default"><%= el.UserName %></span>
         <span class="label label-info"><%= el.LikesCount %> Likes</span>
         <% if(el.MyLikeStatus){ %>
-        <span class="label label-default">Liked</span>
+        <span class="label label-default">You Liked</span>
         <% } else { %>
-        <span class="label label-success">Like</span>
+        <a href="javascript:void(0);" data-id="<%= el.CommentID %>" class="label label-success like_comment">Like</a>
         <% } %>
         <span class="label label-warning">Reply Comment</span>
       </div>
@@ -57,9 +57,9 @@
         <span class="label label-default"><%= sel.UserName %></span>
         <span class="label label-info"><%= sel.LikesCount %> Likes</span>
         <% if(sel.MyLikeStatus){ %>
-        <span class="label label-default">Liked</span>
+        <span class="label label-default">You Liked</span>
         <% } else { %>
-        <span class="label label-success">Like</span>
+        <a href="javascript:void(0);" data-id="<%= sel.CommentID %>" class="label label-success like_comment">Like</a>
         <% } %>
       </div>
     </div>

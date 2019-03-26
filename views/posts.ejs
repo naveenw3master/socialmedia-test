@@ -17,9 +17,9 @@
           <span class="label label-info"><%= el.CommentsCount %> Comments</span>
           <span class="label label-info"><%= el.LikesCount %> Likes</span>
           <% if(el.MyLikeStatus){ %>
-          <span class="label label-default">Liked</span>
+          <span class="label label-default">You Liked</span>
           <% } else { %>
-          <span class="label label-success">Like</span>
+          <a href="javascript:void(0);" data-id="<%= el.PostID %>" class="label label-success like_post">Like</a>
           <% } %>
         </div>
     </div>

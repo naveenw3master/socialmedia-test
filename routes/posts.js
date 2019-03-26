@@ -77,4 +77,28 @@ router.post('/post-create', function(req, res, next) {
   });
 });
 
+/* POST post like page. */
+router.post('/like-post', function(req, res, next) {
+  var post_id = req.body.post_id;
+  var user_id = req.session.uid;
+  var status = "ACTIVE";
+  db.query('INSERT INTO likes (Type, UserFKID, PostFKID, CommentFKID, Status) VALUES (?, ?, ?, ?, ?)', ["POST", user_id, post_id, 0, status], function(err, result) {
+    if (err) throw err;
+
+    res.json({"status": true, "message": "Liked successfully!"});
+  });
+});
+
+/* POST comment like page. */
+router.post('/like-comment', function(req, res, next) {
+  var comment_id = req.body.comment_id;
+  var user_id = req.session.uid;
+  var status = "ACTIVE";
+  db.query('INSERT INTO likes (Type, UserFKID, PostFKID, CommentFKID, Status) VALUES (?, ?, ?, ?, ?)', ["COMMENT", user_id, 0, comment_id, status], function(err, result) {
+    if (err) throw err;
+
+    res.json({"status": true, "message": "Liked successfully!"});
+  });
+});
+
 module.exports = router;
