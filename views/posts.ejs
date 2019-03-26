@@ -9,24 +9,22 @@
 <div class="container">
     <h1>Posts</h1>
 
+    <% if(posts.length > 0){ posts.forEach(function(el, index) { %>
     <div class="row post_wrapper">
         <div class="col-md-12">
-          <a href="/posts/post-details"><h3>Title Title Title Title Title Title Title </h3></a>
-          <p>Details Details Details Details Details Details Details Details Details Details Details Details </p>
-          <span class="label label-info">3 Comments</span>
-          <span class="label label-info">10 Likes</span>
+          <a href="/posts/post-details"><h3><%= el.Title %></h3></a>
+          <p><%= el.Description %></p>
+          <span class="label label-info"><%= el.CommentsCount %> Comments</span>
+          <span class="label label-info"><%= el.LikesCount %> Likes</span>
+          <% if(el.MyLikeStatus){ %>
+          <span class="label label-default">Liked</span>
+          <% } else { %>
           <span class="label label-success">Like</span>
+          <% } %>
         </div>
     </div>
-    <div class="row post_wrapper">
-        <div class="col-md-12">
-          <a href="/posts/post-details"><h3>Title Title Title Title Title Title Title </h3></a>
-          <p>Details Details Details Details Details Details Details Details Details Details Details Details </p>
-          <span class="label label-info">3 Comments</span>
-          <span class="label label-info">10 Likes</span>
-          <span class="label label-success">Like</span>
-        </div>
-    </div>
+    <% }); } %>
+
 
 </div>
 
