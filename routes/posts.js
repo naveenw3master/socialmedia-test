@@ -3,17 +3,17 @@ var router = express.Router();
 
 /* GET posts page. */
 router.get('/', function(req, res, next) {
-  res.render('posts', { title: 'Posts' });
+  res.render('posts', { username: req.session.name });
 });
 
 /* GET new post page. */
 router.get('/new-post', function(req, res, next) {
-  res.render('new_post', { title: 'New Post' });
+  res.render('new_post', { username: req.session.name });
 });
 
 /* GET post details page. */
 router.get('/post-details', function(req, res, next) {
-  res.render('post_details', { title: 'Post Details' });
+  res.render('post_details', { username: req.session.name });
 });
 
 /* POST post create page. */
