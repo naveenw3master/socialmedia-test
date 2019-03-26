@@ -50,14 +50,20 @@
       </div>
     </div>
 
+    <% if(el.SubComments.length > 0){ el.SubComments.forEach(function(sel, sindex) { %>
     <div class="row sub_comment_wrapper">
       <div class="col-md-12">
-        <p>Details Details Details Details Details Details Details Details Details Details Details Details </p>
-        <span class="label label-default">Naveen</span>
-        <span class="label label-info">10 Likes</span>
+        <p><%= sel.Message %></p>
+        <span class="label label-default"><%= sel.UserName %></span>
+        <span class="label label-info"><%= sel.LikesCount %> Likes</span>
+        <% if(sel.MyLikeStatus){ %>
+        <span class="label label-default">Liked</span>
+        <% } else { %>
         <span class="label label-success">Like</span>
+        <% } %>
       </div>
     </div>
+    <% }); } %>
 
 
     <% }); } %>

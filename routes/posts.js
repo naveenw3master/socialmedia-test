@@ -1,4 +1,5 @@
 var express = require('express');
+var async = require("async");
 var router = express.Router();
 var db = require('./../config/db');
 
@@ -39,9 +40,26 @@ router.get('/post-details', function(req, res, next) {
       "LEFT JOIN `users` u ON u.`UserID`= c.`UserFKID` \n"+
       "LEFT JOIN `likes` l ON l.`CommentFKID`= c.`CommentID` AND l.`Type`='COMMENT' AND l.Status = 'ACTIVE' \n"+
       "LEFT JOIN `likes` ml ON ml.`CommentFKID`= c.`CommentID` AND ml.`Type`='COMMENT' AND ml.Status = 'ACTIVE'  AND ml.`UserFKID`=? \n"+
-      "WHERE c.Status = 'ACTIVE' AND c.PostFKID = ? \n"+
+      "WHERE c.Status = 'ACTIVE' AND c.ParentFKID = 0 AND c.PostFKID = ? \n"+
       "GROUP BY `CommentID`", [user_id, post_id], function(err, comment_result) {
-      res.render('post_details', { username: req.session.name, post_details: result[0], comments: comment_result });
+        var comments_data = [];
+        async.forEachOfSeries(comment_result, (value, key, callback) => {
+          var sub_comments = [];
+
+          db.query("SELECT c.*, u.Name as UserName, COUNT(DISTINCT(l.`LikeID`)) AS LikesCount, IF(ml.`LikeID`, 1, 0) AS MyLikeStatus FROM comments c \n"+
+            "LEFT JOIN `users` u ON u.`UserID`= c.`UserFKID` \n"+
+            "LEFT JOIN `likes` l ON l.`CommentFKID`= c.`CommentID` AND l.`Type`='COMMENT' AND l.Status = 'ACTIVE' \n"+
+            "LEFT JOIN `likes` ml ON ml.`CommentFKID`= c.`CommentID` AND ml.`Type`='COMMENT' AND ml.Status = 'ACTIVE'  AND ml.`UserFKID`=? \n"+
+            "WHERE c.Status = 'ACTIVE' AND c.ParentFKID = ? \n"+
+            "GROUP BY `CommentID`", [user_id, value.CommentID], function(err, sub_comment_result) {
+              value.SubComments = sub_comment_result;
+              comments_data.push(value);
+              return callback();
+          });
+      }, err => {
+          if (err) console.error(err.message);
+          res.render('post_details', { username: req.session.name, post_details: result[0], comments: comments_data });
+      });
     });
   });
 });
