@@ -41,7 +41,8 @@ router.get('/post-details', function(req, res, next) {
       "LEFT JOIN `likes` l ON l.`CommentFKID`= c.`CommentID` AND l.`Type`='COMMENT' AND l.Status = 'ACTIVE' \n"+
       "LEFT JOIN `likes` ml ON ml.`CommentFKID`= c.`CommentID` AND ml.`Type`='COMMENT' AND ml.Status = 'ACTIVE'  AND ml.`UserFKID`=? \n"+
       "WHERE c.Status = 'ACTIVE' AND c.ParentFKID = 0 AND c.PostFKID = ? \n"+
-      "GROUP BY `CommentID`", [user_id, post_id], function(err, comment_result) {
+      "GROUP BY `CommentID`\n"+
+      "ORDER BY CommentID DESC", [user_id, post_id], function(err, comment_result) {
         var comments_data = [];
         async.forEachOfSeries(comment_result, (value, key, callback) => {
           var sub_comments = [];
@@ -51,7 +52,8 @@ router.get('/post-details', function(req, res, next) {
             "LEFT JOIN `likes` l ON l.`CommentFKID`= c.`CommentID` AND l.`Type`='COMMENT' AND l.Status = 'ACTIVE' \n"+
             "LEFT JOIN `likes` ml ON ml.`CommentFKID`= c.`CommentID` AND ml.`Type`='COMMENT' AND ml.Status = 'ACTIVE'  AND ml.`UserFKID`=? \n"+
             "WHERE c.Status = 'ACTIVE' AND c.ParentFKID = ? \n"+
-            "GROUP BY `CommentID`", [user_id, value.CommentID], function(err, sub_comment_result) {
+            "GROUP BY `CommentID`\n"+
+            "ORDER BY CommentID DESC", [user_id, value.CommentID], function(err, sub_comment_result) {
               value.SubComments = sub_comment_result;
               comments_data.push(value);
               return callback();
@@ -72,7 +74,6 @@ router.post('/post-create', function(req, res, next) {
   var status = "ACTIVE";
   db.query('INSERT INTO posts (UserFKID, Title, Description, Status) VALUES (?, ?, ?, ?)', [user_id, title, details, status], function(err, result) {
     if (err) throw err;
-
     res.redirect('/posts');
   });
 });
@@ -84,7 +85,6 @@ router.post('/like-post', function(req, res, next) {
   var status = "ACTIVE";
   db.query('INSERT INTO likes (Type, UserFKID, PostFKID, CommentFKID, Status) VALUES (?, ?, ?, ?, ?)', ["POST", user_id, post_id, 0, status], function(err, result) {
     if (err) throw err;
-
     res.json({"status": true, "message": "Liked successfully!"});
   });
 });
@@ -96,7 +96,6 @@ router.post('/like-comment', function(req, res, next) {
   var status = "ACTIVE";
   db.query('INSERT INTO likes (Type, UserFKID, PostFKID, CommentFKID, Status) VALUES (?, ?, ?, ?, ?)', ["COMMENT", user_id, 0, comment_id, status], function(err, result) {
     if (err) throw err;
-
     res.json({"status": true, "message": "Liked successfully!"});
   });
 });
