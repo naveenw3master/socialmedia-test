@@ -1,0 +1,31 @@
+<%- include header.ejs %>
+
+<style media="screen">
+  .post_wrapper{
+    background: #f8f8f8;
+    margin: 30px 10px;
+    padding: 50px;
+  }
+</style>
+<div class="container">
+    <h1>New Post</h1>
+
+    <div class="row post_wrapper">
+        <div class="col-md-12">
+          <form class="form" action="/posts/post-create" method="post">
+            <div class="form-group">
+              <label for="inputTitle" class="sr-only">Title</label>
+              <input type="text" id="inputTitle" class="form-control" placeholder="Title" required="">
+            </div>
+            <div class="form-group">
+              <label for="inputDetails" class="sr-only">Details</label>
+              <textarea id="inputDetails" class="form-control" placeholder="Details" rows="5" required=""></textarea>
+            </div>
+            <button class="btn btn-lg btn-success" type="submit">Submit Post</button>
+          </form>
+        </div>
+    </div>
+
+</div>
+
+<%- include footer.ejs %>

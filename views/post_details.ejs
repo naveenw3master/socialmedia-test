@@ -1,0 +1,70 @@
+<%- include header.ejs %>
+
+<style media="screen">
+  .post_wrapper{
+    background: #f8f8f8;
+    margin: 30px 10px;
+  }
+  .comment_wrapper{
+    background: #f5ebeb;
+    margin: 30px 10px 0 10px;
+    padding:20px;
+  }
+  .sub_comment_wrapper{
+    background: #f3d5d5;
+    margin: 5px 10px 5px 60px;
+    padding:20px;
+  }
+</style>
+<div class="container">
+    <h1>Post Details</h1>
+
+    <div class="row post_wrapper">
+        <div class="col-md-12">
+          <a href="/posts/post-details"><h3>Title Title Title Title Title Title Title </h3></a>
+          <p>Details Details Details Details Details Details Details Details Details Details Details Details </p>
+          <span class="label label-info">3 Comments</span>
+          <span class="label label-info">10 Likes</span>
+          <span class="label label-success">Like</span>
+        </div>
+    </div>
+
+    <h4>Comments:</h4>
+    <div class="row comment_wrapper">
+      <div class="col-md-12">
+        <p>Details Details Details Details Details Details Details Details Details Details Details Details </p>
+        <span class="label label-default">Naveen</span>
+        <span class="label label-info">10 Likes</span>
+        <span class="label label-success">Like</span>
+        <span class="label label-warning">Reply Comment</span>
+      </div>
+    </div>
+    <div class="row sub_comment_wrapper">
+      <div class="col-md-12">
+        <p>Details Details Details Details Details Details Details Details Details Details Details Details </p>
+        <span class="label label-default">Naveen</span>
+        <span class="label label-info">10 Likes</span>
+        <span class="label label-success">Like</span>
+      </div>
+    </div>
+    <div class="row comment_wrapper">
+      <div class="col-md-12">
+        <p>Details Details Details Details Details Details Details Details Details Details Details Details </p>
+        <span class="label label-default">Naveen</span>
+        <span class="label label-info">10 Likes</span>
+        <span class="label label-success">Like</span>
+        <span class="label label-warning">Reply Comment</span>
+      </div>
+    </div>
+    <div class="row comment_wrapper">
+      <div class="col-md-12">
+        <p>Details Details Details Details Details Details Details Details Details Details Details Details </p>
+        <span class="label label-default">Naveen</span>
+        <span class="label label-info">10 Likes</span>
+        <span class="label label-success">Like</span>
+        <span class="label label-warning">Reply Comment</span>
+      </div>
+    </div>
+</div>
+
+<%- include footer.ejs %>
