@@ -37,4 +37,26 @@ $(function(){
       });
     }
   });
+  $('.post-comment').click(function(){
+    var $this = $(this);
+    var $form = $this.parents('form');
+
+    if($form.find('textarea[name="message"]').val() == ""){
+      alert("Please enter the message!");
+      return;
+    }
+
+    $.ajax({
+      url: $form.attr('action'),
+      type: "POST",
+      dataType: "json",
+      data: $form.serialize(),
+      success: function(res){
+        if(res.status){
+          location.reload();
+        }
+      }
+    });
+
+  });
 })

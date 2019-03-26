@@ -15,13 +15,13 @@ router.get('/', function(req, res, next) {
     "GROUP BY `PostID`\n"+
     "ORDER BY PostID DESC", [user_id], function(err, result) {
     if (err) throw err;
-    res.render('posts', { username: req.session.name, posts: result });
+    return res.render('posts', { username: req.session.name, posts: result });
   });
 });
 
 /* GET new post page. */
 router.get('/new-post', function(req, res, next) {
-  res.render('new_post', { username: req.session.name });
+  return res.render('new_post', { username: req.session.name });
 });
 
 /* GET post details page. */
@@ -60,7 +60,7 @@ router.get('/post-details', function(req, res, next) {
           });
       }, err => {
           if (err) console.error(err.message);
-          res.render('post_details', { username: req.session.name, post_details: result[0], comments: comments_data });
+          return res.render('post_details', { username: req.session.name, post_details: result[0], comments: comments_data });
       });
     });
   });
@@ -74,7 +74,7 @@ router.post('/post-create', function(req, res, next) {
   var status = "ACTIVE";
   db.query('INSERT INTO posts (UserFKID, Title, Description, Status) VALUES (?, ?, ?, ?)', [user_id, title, details, status], function(err, result) {
     if (err) throw err;
-    res.redirect('/posts');
+    return res.redirect('/posts');
   });
 });
 
@@ -85,7 +85,7 @@ router.post('/like-post', function(req, res, next) {
   var status = "ACTIVE";
   db.query('INSERT INTO likes (Type, UserFKID, PostFKID, CommentFKID, Status) VALUES (?, ?, ?, ?, ?)', ["POST", user_id, post_id, 0, status], function(err, result) {
     if (err) throw err;
-    res.json({"status": true, "message": "Liked successfully!"});
+    return res.json({"status": true, "message": "Liked successfully!"});
   });
 });
 
@@ -96,7 +96,20 @@ router.post('/like-comment', function(req, res, next) {
   var status = "ACTIVE";
   db.query('INSERT INTO likes (Type, UserFKID, PostFKID, CommentFKID, Status) VALUES (?, ?, ?, ?, ?)', ["COMMENT", user_id, 0, comment_id, status], function(err, result) {
     if (err) throw err;
-    res.json({"status": true, "message": "Liked successfully!"});
+    return res.json({"status": true, "message": "Liked successfully!"});
+  });
+});
+
+/* POST post comment page. */
+router.post('/post-comment', function(req, res, next) {
+  var post_id = req.body.post_id;
+  var message = req.body.message;
+  var parent_id = req.body.parent_id;
+  var user_id = req.session.uid;
+  var status = "ACTIVE";
+  db.query('INSERT INTO comments (UserFKID, PostFKID, Message, ParentFKID, Status) VALUES (?, ?, ?, ?, ?)', [user_id, post_id, message, parent_id, status], function(err, result) {
+    if (err) throw err;
+    return res.json({"status": true, "message": "Commented successfully!"});
   });
 });
 
