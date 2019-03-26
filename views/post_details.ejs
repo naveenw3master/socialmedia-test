@@ -21,24 +21,35 @@
 
     <div class="row post_wrapper">
         <div class="col-md-12">
-          <a href="/posts/post-details"><h3>Title Title Title Title Title Title Title </h3></a>
-          <p>Details Details Details Details Details Details Details Details Details Details Details Details </p>
-          <span class="label label-info">3 Comments</span>
-          <span class="label label-info">10 Likes</span>
+          <a href="javascript:void(0);"><h3><%= post_details.Title %></h3></a>
+          <p><%= post_details.Description %></p>
+          <span class="label label-info"><%= post_details.CommentsCount %> Comments</span>
+          <span class="label label-info"><%= post_details.LikesCount %> Likes</span>
+          <% if(post_details.MyLikeStatus){ %>
+          <span class="label label-default">Liked</span>
+          <% } else { %>
           <span class="label label-success">Like</span>
+          <% } %>
         </div>
     </div>
 
     <h4>Comments:</h4>
+
+    <% if(comments.length > 0){ comments.forEach(function(el, index) { %>
     <div class="row comment_wrapper">
       <div class="col-md-12">
-        <p>Details Details Details Details Details Details Details Details Details Details Details Details </p>
-        <span class="label label-default">Naveen</span>
-        <span class="label label-info">10 Likes</span>
+        <p><%= el.Message %></p>
+        <span class="label label-default"><%= el.UserName %></span>
+        <span class="label label-info"><%= el.LikesCount %> Likes</span>
+        <% if(el.MyLikeStatus){ %>
+        <span class="label label-default">Liked</span>
+        <% } else { %>
         <span class="label label-success">Like</span>
+        <% } %>
         <span class="label label-warning">Reply Comment</span>
       </div>
     </div>
+
     <div class="row sub_comment_wrapper">
       <div class="col-md-12">
         <p>Details Details Details Details Details Details Details Details Details Details Details Details </p>
@@ -47,24 +58,10 @@
         <span class="label label-success">Like</span>
       </div>
     </div>
-    <div class="row comment_wrapper">
-      <div class="col-md-12">
-        <p>Details Details Details Details Details Details Details Details Details Details Details Details </p>
-        <span class="label label-default">Naveen</span>
-        <span class="label label-info">10 Likes</span>
-        <span class="label label-success">Like</span>
-        <span class="label label-warning">Reply Comment</span>
-      </div>
-    </div>
-    <div class="row comment_wrapper">
-      <div class="col-md-12">
-        <p>Details Details Details Details Details Details Details Details Details Details Details Details </p>
-        <span class="label label-default">Naveen</span>
-        <span class="label label-info">10 Likes</span>
-        <span class="label label-success">Like</span>
-        <span class="label label-warning">Reply Comment</span>
-      </div>
-    </div>
+
+
+    <% }); } %>
+
 </div>
 
 <%- include footer.ejs %>

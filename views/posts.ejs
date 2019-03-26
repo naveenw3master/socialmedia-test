@@ -12,7 +12,7 @@
     <% if(posts.length > 0){ posts.forEach(function(el, index) { %>
     <div class="row post_wrapper">
         <div class="col-md-12">
-          <a href="/posts/post-details"><h3><%= el.Title %></h3></a>
+          <a href="/posts/post-details?id=<%= el.PostID %>"><h3><%= el.Title %></h3></a>
           <p><%= el.Description %></p>
           <span class="label label-info"><%= el.CommentsCount %> Comments</span>
           <span class="label label-info"><%= el.LikesCount %> Likes</span>
