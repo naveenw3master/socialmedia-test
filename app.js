@@ -24,7 +24,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
   secret: 'S0c1@1M3d1@',
-  cookie: { maxAge: 60000 }
+  cookie: { maxAge: 600000 }
 }));
 
 var sess;
