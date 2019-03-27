@@ -1,0 +1,14 @@
+{ "_id" : { "$oid" : "5c9bd22a0a65281fd72f879e" }, "type" : "POST", "user_id" : { "$oid" : "5c9bc1d588e8bf1b8382d638" }, "post_id" : { "$oid" : "5c9bc6abb050f91c3bb80090" }, "status" : "ACTIVE" }
+{ "_id" : { "$oid" : "5c9bd2300a65281fd72f879f" }, "type" : "POST", "user_id" : { "$oid" : "5c9bc1d588e8bf1b8382d638" }, "post_id" : { "$oid" : "5c9bc6abb050f91c3bb80090" }, "status" : "ACTIVE" }
+{ "_id" : { "$oid" : "5c9bd2330a65281fd72f87a0" }, "type" : "POST", "user_id" : { "$oid" : "5c9bc1d588e8bf1b8382d638" }, "post_id" : { "$oid" : "5c9bc6abb050f91c3bb80090" }, "status" : "ACTIVE" }
+{ "_id" : { "$oid" : "5c9bd37d1d3633202b5bee52" }, "type" : "POST", "user_id" : { "$oid" : "5c9bc1d588e8bf1b8382d638" }, "post_id" : { "$oid" : "5c9bc6abb050f91c3bb80090" }, "status" : "ACTIVE" }
+{ "_id" : { "$oid" : "5c9bd37f1d3633202b5bee53" }, "type" : "POST", "user_id" : { "$oid" : "5c9bc1d588e8bf1b8382d638" }, "post_id" : { "$oid" : "5c9bc6abb050f91c3bb80090" }, "status" : "ACTIVE" }
+{ "_id" : { "$oid" : "5c9bd3841d3633202b5bee54" }, "type" : "POST", "user_id" : { "$oid" : "5c9bc1d588e8bf1b8382d638" }, "post_id" : { "$oid" : "5c9bc6dfdd01161c5554fd3c" }, "status" : "ACTIVE" }
+{ "_id" : { "$oid" : "5c9bd3861d3633202b5bee55" }, "type" : "POST", "user_id" : { "$oid" : "5c9bc1d588e8bf1b8382d638" }, "post_id" : { "$oid" : "5c9bc6f8dd01161c5554fd3d" }, "status" : "ACTIVE" }
+{ "_id" : { "$oid" : "5c9bd64ed27574206779f029" }, "type" : "POST", "user_id" : { "$oid" : "5c9bc1d588e8bf1b8382d638" }, "post_id" : { "$oid" : "5c9bc6dfdd01161c5554fd3c" }, "status" : "ACTIVE" }
+{ "_id" : { "$oid" : "5c9bdc8fd0004e22956bba15" }, "type" : "COMMENT", "user_id" : { "$oid" : "5c9bc1d588e8bf1b8382d638" }, "comment_id" : { "$oid" : "5c9bdbb72e9a962240524c55" }, "status" : "ACTIVE" }
+{ "_id" : { "$oid" : "5c9bdcacd0004e22956bba16" }, "type" : "POST", "user_id" : { "$oid" : "5c9bc3160907111bba09e07c" }, "post_id" : { "$oid" : "5c9bc6abb050f91c3bb80090" }, "status" : "ACTIVE" }
+{ "_id" : { "$oid" : "5c9bdcb0d0004e22956bba17" }, "type" : "COMMENT", "user_id" : { "$oid" : "5c9bc3160907111bba09e07c" }, "comment_id" : { "$oid" : "5c9bdbb72e9a962240524c55" }, "status" : "ACTIVE" }
+{ "_id" : { "$oid" : "5c9bdef875ee3f2347e3f334" }, "type" : "COMMENT", "user_id" : { "$oid" : "5c9bc3160907111bba09e07c" }, "comment_id" : { "$oid" : "5c9bded5fae002232b3658d6" }, "status" : "ACTIVE" }
+{ "_id" : { "$oid" : "5c9bdf1a75ee3f2347e3f337" }, "type" : "COMMENT", "user_id" : { "$oid" : "5c9bc3160907111bba09e07c" }, "comment_id" : { "$oid" : "5c9bdf1475ee3f2347e3f336" }, "status" : "ACTIVE" }
+{ "_id" : { "$oid" : "5c9bdf1e75ee3f2347e3f338" }, "type" : "COMMENT", "user_id" : { "$oid" : "5c9bc3160907111bba09e07c" }, "comment_id" : { "$oid" : "5c9bdf0975ee3f2347e3f335" }, "status" : "ACTIVE" }

@@ -1,0 +1,2 @@
+{ "_id" : { "$oid" : "5c9bc1d588e8bf1b8382d638" }, "name" : "Naveen", "email" : "naveen.w3master@gmail.com", "password" : "12345", "status" : "ACTIVE" }
+{ "_id" : { "$oid" : "5c9bc3160907111bba09e07c" }, "name" : "Sharath", "email" : "sharath.bodapati@gmail.com", "password" : "12345", "status" : "ACTIVE" }
