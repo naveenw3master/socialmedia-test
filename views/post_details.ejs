@@ -21,15 +21,15 @@
 
     <div class="row post_wrapper">
         <div class="col-md-12">
-          <a href="javascript:void(0);"><h3><%= post_details.Title %></h3></a>
-          <p><%= post_details.Description %></p>
-          <span class="label label-default"><%= post_details.UserName %></span>
-          <span class="label label-info"><%= post_details.CommentsCount %> Comments</span>
-          <span class="label label-info"><%= post_details.LikesCount %> Likes</span>
-          <% if(post_details.MyLikeStatus){ %>
+          <a href="javascript:void(0);"><h3><%= post_details.title %></h3></a>
+          <p><%= post_details.description %></p>
+          <span class="label label-default"><%= post_details.username %></span>
+          <span class="label label-info"><%= post_details.comments_count %> Comments</span>
+          <span class="label label-info"><%= post_details.likes_count %> Likes</span>
+          <% if(post_details.my_like_status){ %>
           <span class="label label-default">You Liked</span>
           <% } else { %>
-          <a href="javascript:void(0);" data-id="<%= post_details.PostID %>" class="label label-success like_post">Like</a>
+          <a href="javascript:void(0);" data-id="<%= post_details._id %>" class="label label-success like_post">Like</a>
           <% } %>
           <a href="javascript:void(0);" class="label label-warning post-comment-btn" data-parentid="0" data-toggle="modal" data-target="#commentModal">Post Comment</a>
         </div>
@@ -40,28 +40,28 @@
     <% if(comments.length > 0){ comments.forEach(function(el, index) { %>
     <div class="row comment_wrapper">
       <div class="col-md-12">
-        <p><%= el.Message %></p>
-        <span class="label label-default"><%= el.UserName %></span>
-        <span class="label label-info"><%= el.LikesCount %> Likes</span>
-        <% if(el.MyLikeStatus){ %>
+        <p><%= el.message %></p>
+        <span class="label label-default"><%= el.username %></span>
+        <span class="label label-info"><%= el.likes_count %> Likes</span>
+        <% if(el.my_like_status){ %>
         <span class="label label-default">You Liked</span>
         <% } else { %>
-        <a href="javascript:void(0);" data-id="<%= el.CommentID %>" class="label label-success like_comment">Like</a>
+        <a href="javascript:void(0);" data-id="<%= el._id %>" class="label label-success like_comment">Like</a>
         <% } %>
-        <a href="javascript:void(0);" class="label label-warning post-comment-btn" data-parentid="<%= el.CommentID %>" data-toggle="modal" data-target="#commentModal">Reply Comment</a>
+        <a href="javascript:void(0);" class="label label-warning post-comment-btn" data-parentid="<%= el._id %>" data-toggle="modal" data-target="#commentModal">Reply Comment</a>
       </div>
     </div>
 
-    <% if(el.SubComments.length > 0){ el.SubComments.forEach(function(sel, sindex) { %>
+    <% if(el.sub_comments.length > 0){ el.sub_comments.forEach(function(sel, sindex) { %>
     <div class="row sub_comment_wrapper">
       <div class="col-md-12">
-        <p><%= sel.Message %></p>
-        <span class="label label-default"><%= sel.UserName %></span>
-        <span class="label label-info"><%= sel.LikesCount %> Likes</span>
-        <% if(sel.MyLikeStatus){ %>
+        <p><%= sel.message %></p>
+        <span class="label label-default"><%= sel.username %></span>
+        <span class="label label-info"><%= sel.likes_count %> Likes</span>
+        <% if(sel.my_like_status){ %>
         <span class="label label-default">You Liked</span>
         <% } else { %>
-        <a href="javascript:void(0);" data-id="<%= sel.CommentID %>" class="label label-success like_comment">Like</a>
+        <a href="javascript:void(0);" data-id="<%= sel._id %>" class="label label-success like_comment">Like</a>
         <% } %>
       </div>
     </div>
@@ -84,7 +84,7 @@
           <h4 class="modal-title">Post Comment</h4>
         </div>
         <div class="modal-body">
-          <input type="hidden" name="post_id" value="<%= post_details.PostID %>" />
+          <input type="hidden" name="post_id" value="<%= post_details._id %>" />
           <input type="hidden" name="parent_id" value="" />
           <textarea name="message" rows="8" cols="80" class="form-control" required></textarea>
         </div>

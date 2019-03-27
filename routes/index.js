@@ -23,7 +23,6 @@ router.post('/login', function(req, res, next) {
   dbo.collection("users").find({email: email, password: password, status: status}).toArray(function(err, chkresult){
     if (err) throw err;
     if(chkresult.length > 0){
-      console.log(chkresult);
       req.session.uid = chkresult[0]._id;
       req.session.name = chkresult[0].name;
       res.redirect('/posts');
